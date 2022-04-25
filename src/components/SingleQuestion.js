@@ -4,13 +4,13 @@ import shuffle from "../util";
 class SingleQuestion extends React.Component {
 
     render() {
-        const options = shuffle(this.props.options.map(option => (
-            <div className="form-check">
+        const options = shuffle(this.props.options.map((option, index) => (
+            <div key={`${this.props.id}-${index}`} className="form-check">
                 <input 
                     className="form-check-input"
                     type="radio"
-                    id={`ans-${this.props.id}-1`}
-                    name={`q-${this.props.id}`} />
+                    id={`ans-${this.props.id}-${index}`}
+                    name={`q-${this.props.id}-${index}`} />
                 <label className="form-check-label">
                     <div dangerouslySetInnerHTML={{__html: option}} />
                 </label>
