@@ -58,7 +58,6 @@ function App(props) {
       <Controls
         id="check-button"
         checkButtonText="Verifica"
-        onCheckAnswers={onCheckAnswers}
       />
     </div>
   );
