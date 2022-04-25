@@ -15,6 +15,7 @@ function makeComponent(question, index) {
           text={question.text}
           options={question.options}
           correct={question.correct}
+          weight={question.weight}
         />
       );
     case "multiple":
@@ -26,6 +27,7 @@ function makeComponent(question, index) {
           text={question.text}
           options={question.options}
           correct={question.correct}
+          weight={question.weight}
         />
       );
     case "fill":
@@ -36,6 +38,7 @@ function makeComponent(question, index) {
           questionNumber={`${index + 1}`}
           text={question.text}
           correct={question.correct}
+          weight={question.weight}
         />
       );
     default:
@@ -52,17 +55,8 @@ function App(props) {
   // (2) map each selected question to the proper component type
   const questions = filteredQuestions.map(makeComponent);
   // (3) render the components
-  const question = filteredQuestions[0];
   return (
     <div>
-      {/* <SingleQuestion
-          id={question.id}
-          key={question.id}
-          questionNumber={1}
-          text={question.text}
-          options={question.options}
-          correct={question.correct}
-        /> */}
       {questions}
       <Controls
         id="check-button"

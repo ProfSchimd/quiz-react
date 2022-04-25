@@ -111,7 +111,8 @@
         "text": "Completa l'istruzione per stampare a video la stringa <code>Ciao</code><br><code>{{0}}('Ciao')</code>",
         "correct": [
             "print"
-        ]
+        ],
+        "weight": 1
     }
 
 ]
