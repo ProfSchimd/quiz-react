@@ -1,5 +1,5 @@
 import React from "react";
-import shuffle from "../util";
+import {shuffle} from "../util";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
 function MultipleQuestion(props) {

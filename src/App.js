@@ -1,8 +1,9 @@
+import { useContext } from "react";
+import { QuestionContext } from ".";
 import Controls from "./components/Controls";
 import FillQuestion from "./components/FillQuestion";
 import MultipleQuestion from "./components/MultipleQuestion";
 import SingleQuestion from "./components/SingleQuestion";
-import shuffle from "./util";
 
 function makeComponent(question, index) {
   switch (question.type) {
@@ -47,17 +48,12 @@ function makeComponent(question, index) {
   return null;
 }
 
-// TODO: Change to object so to leverage component lifecycle
-function App(props) {
-  // (1) select MAX_QUESTIONS questions (TODO)
-  // Select (TODO)
-  const filteredQuestions = shuffle(props.questions); // ...and randomize
-  // (2) map each selected question to the proper component type
-  const questions = filteredQuestions.map(makeComponent);
-  // (3) render the components
+function App() {
+  const questions = useContext(QuestionContext);
+  const questionsComponents = questions.map(makeComponent);
   return (
     <div>
-      {questions}
+      {questionsComponents}
       <Controls
         id="check-button"
         checkButtonText="Verifica"

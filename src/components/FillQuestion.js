@@ -1,9 +1,11 @@
 import React from "react";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
+// Question with one or more blank spaces to be filled.
+// Each space is text area.
 function FillQuestion(props) {
-
     var text = props.text;
+    // control id is: 'questionId-number' where number is 0 to m-1
     for (var i = 0; i < props.correct.length; i++) {
         var searchPattern = `{{${i}}}`;
         var inputHTML = `<input type="text" id="ans-${props.id}-${i}" aria-label="input risposta">`
