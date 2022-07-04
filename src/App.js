@@ -9,41 +9,15 @@ function makeComponent(question, index) {
   switch (question.type) {
     case "single":
       return (
-        <SingleQuestion
-          id={question.id}
-          key={question.id}
-          questionNumber={`${index + 1}`}
-          text={question.text}
-          options={question.options}
-          correct={question.correct}
-          weight={question.weight}
-          onAnswer={f => f}
-        />
+        <SingleQuestion questionNumber={`${index + 1}`} />
       );
     case "multiple":
       return (
-        <MultipleQuestion
-          id={question.id}
-          key={question.id}
-          questionNumber={`${index + 1}`}
-          text={question.text}
-          options={question.options}
-          correct={question.correct}
-          weight={question.weight}
-          onAnswer={f => console.log(`${index} ANS ${f}`)}
-        />
+        <MultipleQuestion questionNumber={`${index + 1}`} />
       );
     case "fill":
       return (
-        <FillQuestion
-          id={question.id}
-          key={question.id}
-          questionNumber={`${index + 1}`}
-          text={question.text}
-          correct={question.correct}
-          weight={question.weight}
-          onAnswer={f => f}
-        />
+        <FillQuestion questionNumber={`${index + 1}`} />
       );
     default:
       break;
