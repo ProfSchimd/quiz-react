@@ -17,6 +17,7 @@ function makeComponent(question, index) {
           options={question.options}
           correct={question.correct}
           weight={question.weight}
+          onAnswer={f => f}
         />
       );
     case "multiple":
@@ -29,6 +30,7 @@ function makeComponent(question, index) {
           options={question.options}
           correct={question.correct}
           weight={question.weight}
+          onAnswer={f => console.log(`${index} ANS ${f}`)}
         />
       );
     case "fill":
@@ -40,6 +42,7 @@ function makeComponent(question, index) {
           text={question.text}
           correct={question.correct}
           weight={question.weight}
+          onAnswer={f => f}
         />
       );
     default:

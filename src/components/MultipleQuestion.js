@@ -1,11 +1,10 @@
 import React from "react";
-import {shuffle} from "../util";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
 function MultipleQuestion(props) {
 
 
-    const options = shuffle(props.options.map((option, index) => (
+    const options = props.options.map((option, index) => (
         <div key={`${props.id}-${index}`} className="form-check">
             <input
                 className="form-check-input"
@@ -16,7 +15,7 @@ function MultipleQuestion(props) {
                 <div dangerouslySetInnerHTML={{ __html: option }} />
             </label>
         </div>
-    )));
+    ));
     var difficultyText = <span className="badge bg-success">Facile</span>;
     if (props.weight > 2) {
         difficultyText = (props.weight < 5) ?

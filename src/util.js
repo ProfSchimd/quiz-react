@@ -12,11 +12,28 @@ function shuffle(array) {
     return array;
 }
 
+function processQuestion(q) {
+    let answers = null;
+    // TODO shuffle options (!! correct vector !!)
+    switch (q.type) {
+        case "single":
+            answers = q.options.map(o => false);
+            break;
+        case "multiple":
+            answers = q.correct.map(c => false);
+            break;
+        case "fill":
+            answers = q.correct.map(c => "");
+            break;
+        default:
+            break;
+    }
+    return {...q, ans: answers};
+}
+
 function preprocessQuestions(questions) {
     // select MAX_QUESTIONS questions (TODO)
-    const processed = questions.map(q => { 
-        return {...q, ans: null}
-     });
+    const processed = questions.map(q =>  processQuestion(q));
     // Shuffle
     return shuffle(processed);
 }
