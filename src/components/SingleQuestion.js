@@ -7,7 +7,6 @@ function SingleQuestion(props) {
     // const questions = useContext(QuestionContext);
     const questions = useContext(QuestionContext);
     const question = questions[props.questionNumber-1];
-    console.log(question);
 
     const options = question.options.map((option, index) => (
         <div key={`${question.id}-${index}`} className="form-check">

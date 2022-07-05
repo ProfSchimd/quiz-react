@@ -4,20 +4,21 @@ import Controls from "./components/Controls";
 import FillQuestion from "./components/FillQuestion";
 import MultipleQuestion from "./components/MultipleQuestion";
 import SingleQuestion from "./components/SingleQuestion";
+import TestComponent from "./components/TestComponent";
 
 function makeComponent(question, index) {
   switch (question.type) {
     case "single":
       return (
-        <SingleQuestion questionNumber={`${index + 1}`} />
+        <SingleQuestion key={ index } questionNumber={`${index + 1}`} />
       );
     case "multiple":
       return (
-        <MultipleQuestion questionNumber={`${index + 1}`} />
+        <MultipleQuestion key={ index } questionNumber={`${index + 1}`} />
       );
     case "fill":
       return (
-        <FillQuestion questionNumber={`${index + 1}`} />
+        <FillQuestion key={ index } questionNumber={`${index + 1}`} />
       );
     default:
       break;
@@ -27,10 +28,9 @@ function makeComponent(question, index) {
 
 function App() {
   const questions = useContext(QuestionContext);
-  const questionsComponents = questions.map(makeComponent);
   return (
     <div>
-      {questionsComponents}
+      { questions.map(makeComponent) }
       <Controls
         id="check-button"
         checkButtonText="Verifica"
