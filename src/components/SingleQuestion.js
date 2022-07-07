@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import QuestionInfoPanel from "./QuestionInfoPanel";
-import { QuestionContext } from "../index"
+import { QuestionContext } from "../components/QuestionProvider"
 
 function SingleQuestion(props) {
 
     // const questions = useContext(QuestionContext);
-    const questions = useContext(QuestionContext);
+    const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber-1];
 
     const options = question.options.map((option, index) => (

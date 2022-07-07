@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { QuestionContext } from ".";
+import { QuestionContext } from "./components/QuestionProvider";
 import Controls from "./components/Controls";
 import FillQuestion from "./components/FillQuestion";
 import MultipleQuestion from "./components/MultipleQuestion";
 import SingleQuestion from "./components/SingleQuestion";
-import TestComponent from "./components/TestComponent";
 
 function makeComponent(question, index) {
   switch (question.type) {
@@ -27,14 +26,16 @@ function makeComponent(question, index) {
 }
 
 function App() {
-  const questions = useContext(QuestionContext);
+  const {questions} = useContext(QuestionContext);
+  console.log(questions);
   return (
-    <div>
-      { questions.map(makeComponent) }
+    <div> 
+      {questions ? questions.map(makeComponent) : "No data"}
       <Controls
         id="check-button"
         checkButtonText="Verifica"
       />
+      
     </div>
   );
 }

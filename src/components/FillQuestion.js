@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { QuestionContext } from "..";
+import { QuestionContext } from "../components/QuestionProvider";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
 // Question with one or more blank spaces to be filled.
 // Each space is text area.
 function FillQuestion(props) {
 
-    const questions = useContext(QuestionContext);
+    const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber - 1];
     const tokens = question.text.split(/\{\{\d\}\}/);
     const last = tokens.pop();

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { QuestionContext } from "..";
+import { QuestionContext } from "../components/QuestionProvider";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
 function MultipleQuestion(props) {
 
-    const questions = useContext(QuestionContext);
+    const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber - 1];
 
     const options = question.options.map((option, index) => (
