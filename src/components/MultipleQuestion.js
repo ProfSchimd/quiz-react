@@ -13,7 +13,9 @@ function MultipleQuestion(props) {
                 className="form-check-input"
                 type="checkbox"
                 id={`ans-${question.id}-${index}`}
-                name={`q-${question.id}-${index}`} />
+                name={`q-${question.id}-${index}`} 
+                onChange={e => question.ans[index] = (e.target.checked ? 1 : 0)}
+            />
             <label className="form-check-label">
                 <div dangerouslySetInnerHTML={{ __html: option }} />
             </label>
@@ -37,7 +39,7 @@ function MultipleQuestion(props) {
             </div>
             <QuestionInfoPanel
                 maxPoints={question.weight}
-                score={null}
+                score={question.score}
             />
         </div>
     );

@@ -1,5 +1,5 @@
 function QuestionInfoPanel(props) {
-    const score = (props.score) ? props.score : '-';
+    const score = (props.score !== null) ? props.score : '-';
     return (
         <div>
             <span className="text-secondary" >Punti: {score} / {props.maxPoints}</span>

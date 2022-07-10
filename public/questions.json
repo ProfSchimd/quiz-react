@@ -9,7 +9,12 @@
             "Con un parametro del <code>main</code>",
             "Dal modulo <code>sys</code> con <code>sys.argv</code>"
         ],
-        "correct": 3,
+        "correct": [
+            0,
+            0,
+            0,
+            1
+        ],
         "weight": 2
     },
     {
@@ -22,7 +27,12 @@
             "La prima istruzione presente nel file <code>.py</code> invocato con il comando <code>python</code>",
             "La prima istruzione del metodo <code>main</code> della classe presente nel file <code>.py</code> invocato"
         ],
-        "correct": 2,
+        "correct": [
+            0,
+            0,
+            1,
+            0
+        ],
         "weight": 1
     },
     {
@@ -35,7 +45,12 @@
             "<code>['programma.py', 'Via Roma', '33']</code>",
             "<code>['programma.py', 'Via Roma 33']</code>"
         ],
-        "correct": 0,
+        "correct": [
+            1,
+            0,
+            0,
+            0
+        ],
         "weight": 2
     },
     {
@@ -48,7 +63,12 @@
             "<code>print</code>",
             "<code>console.log</code>"
         ],
-        "correct": 2,
+        "correct": [
+            0,
+            0,
+            1,
+            0
+        ],
         "weight": 1
     },
     {
@@ -101,7 +121,12 @@
             "<code>float(x)<code>",
             "<code>str(x)<code>"
         ],
-        "correct": 0,
+        "correct": [
+            1,
+            0,
+            0,
+            0
+        ],
         "weight": 1,
         "hint": ""
     },

@@ -4,6 +4,7 @@ import Controls from "./components/Controls";
 import FillQuestion from "./components/FillQuestion";
 import MultipleQuestion from "./components/MultipleQuestion";
 import SingleQuestion from "./components/SingleQuestion";
+import { verifyQuestion } from "./util";
 
 function makeComponent(question, index) {
   switch (question.type) {
@@ -26,16 +27,18 @@ function makeComponent(question, index) {
 }
 
 function App() {
-  const {questions} = useContext(QuestionContext);
-  console.log(questions);
+  const {questions, setQuestions} = useContext(QuestionContext);
   return (
     <div> 
+      
       {questions ? questions.map(makeComponent) : "No data"}
       <Controls
         id="check-button"
         checkButtonText="Verifica"
+        onCheckAnswer={e => {
+          setQuestions(questions.map(q => verifyQuestion(q)));
+        }}
       />
-      
     </div>
   );
 }

@@ -15,7 +15,10 @@ function SingleQuestion(props) {
                 type="radio"
                 id={`ans-${question.id}-${index}`}
                 name={`q-${question.id}`}
-                onChange={f => console.log(index)}
+                onChange={e => {
+                    question.ans = question.options.map(c => 0); // reset first
+                    question.ans[index] = (e.target.checked ? 1 : 0); // set new selected
+                }}
             />
             <label className="form-check-label">
                 <div dangerouslySetInnerHTML={{ __html: option }} />
@@ -41,7 +44,7 @@ function SingleQuestion(props) {
             </div>
             <QuestionInfoPanel
                 maxPoints={question.weight}
-                score={null}
+                score={question.score}
             />
         </div>
     );

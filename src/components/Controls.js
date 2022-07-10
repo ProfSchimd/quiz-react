@@ -5,7 +5,15 @@ function Controls(props) {
                 id={props.id}
                 type="button"
                 value={props.checkButtonText}
-                onClick={props.onCheckAnswers}
+                onClick={e =>props.onCheckAnswer()}
+                
+            />
+            <input 
+                id={`reset-${props.id}`}
+                type="button"
+                value="Reset"
+                onClick={f => f}
+                className="mx-1"
             />
         </div>
     );

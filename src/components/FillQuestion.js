@@ -8,6 +8,7 @@ function FillQuestion(props) {
 
     const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber - 1];
+    
     const tokens = question.text.split(/\{\{\d\}\}/);
     const last = tokens.pop();
     var difficultyText = <span className="badge bg-success">Facile</span>;
@@ -27,7 +28,10 @@ function FillQuestion(props) {
                         return (
                             <span key={i}>
                                 <span key={`s${i}`} dangerouslySetInnerHTML={{ __html: t }} />
-                                <input type="text" onChange={e =>  e.target.value}/>
+                                <input type="text" onChange={e =>  {
+                                    question.ans[i] = e.target.value;
+                                    console.log(question.ans[i]);
+                                    }}/>
                             </span>
                         );
                     })}
@@ -36,7 +40,7 @@ function FillQuestion(props) {
             </div>
             <QuestionInfoPanel
                 maxPoints={question.weight}
-                score={null}
+                score={question.score}
             />
         </div>
     );
