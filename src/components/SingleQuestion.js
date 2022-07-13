@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 import { QuestionContext } from "../components/QuestionProvider"
+import { classForOption } from "./helpers";
 
 function SingleQuestion(props) {
 
-    // const questions = useContext(QuestionContext);
     const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber-1];
 
     const options = question.options.map((option, index) => (
         <div key={`${question.id}-${index}`} className="form-check">
             <input
-                className="form-check-input"
+                className={classForOption(question, index)}
                 type="radio"
                 id={`ans-${question.id}-${index}`}
                 name={`q-${question.id}`}
@@ -23,6 +23,9 @@ function SingleQuestion(props) {
             <label className="form-check-label">
                 <div dangerouslySetInnerHTML={{ __html: option }} />
             </label>
+            <div className="invalid-feedback">
+                {question.review ? question.review[index] : "Errore"}
+            </div>
         </div>
     ));
     var difficultyText = <span className="badge bg-success">Facile</span>;

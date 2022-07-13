@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { QuestionContext } from "../components/QuestionProvider";
+import { classForOption } from "./helpers";
 import QuestionInfoPanel from "./QuestionInfoPanel";
 
 function MultipleQuestion(props) {
@@ -10,7 +11,7 @@ function MultipleQuestion(props) {
     const options = question.options.map((option, index) => (
         <div key={`${question.id}-${index}`} className="form-check">
             <input
-                className="form-check-input"
+                className={classForOption(question, index)}
                 type="checkbox"
                 id={`ans-${question.id}-${index}`}
                 name={`q-${question.id}-${index}`} 
@@ -19,6 +20,9 @@ function MultipleQuestion(props) {
             <label className="form-check-label">
                 <div dangerouslySetInnerHTML={{ __html: option }} />
             </label>
+            <div className="invalid-feedback">
+                {question.review ? question.review[index] : "Errore"}
+            </div>
         </div>
     ));
     var difficultyText = <span className="badge bg-success">Facile</span>;
