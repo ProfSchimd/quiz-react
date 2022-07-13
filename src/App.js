@@ -10,15 +10,15 @@ function makeComponent(question, index) {
   switch (question.type) {
     case "single":
       return (
-        <SingleQuestion key={ index } questionNumber={`${index + 1}`} />
+        <SingleQuestion key={index} questionNumber={`${index + 1}`} />
       );
     case "multiple":
       return (
-        <MultipleQuestion key={ index } questionNumber={`${index + 1}`} />
+        <MultipleQuestion key={index} questionNumber={`${index + 1}`} />
       );
     case "fill":
       return (
-        <FillQuestion key={ index } questionNumber={`${index + 1}`} />
+        <FillQuestion key={index} questionNumber={`${index + 1}`} />
       );
     default:
       break;
@@ -27,10 +27,11 @@ function makeComponent(question, index) {
 }
 
 function App() {
-  const {questions, setQuestions} = useContext(QuestionContext);
+  const { questions, setQuestions } = useContext(QuestionContext);
+  
   return (
-    <div> 
-      
+    <div>
+
       {questions ? questions.map(makeComponent) : "No data"}
       <Controls
         id="check-button"
@@ -39,6 +40,7 @@ function App() {
           setQuestions(questions.map(q => verifyQuestion(q)));
         }}
       />
+      <p>Total Score: {questions ? questions.map(q => q.score).reduce((p,c) => p+c)  : '-'}</p>
     </div>
   );
 }

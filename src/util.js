@@ -31,17 +31,14 @@ function processQuestion(q) {
     return {...q, ans: answers, score: null};
 }
 
-function preprocessQuestions(questions) {
-    // select MAX_QUESTIONS questions (TODO)
+function preprocessQuestions(questions, maxQuestion = 5) {
     const processed = questions.map(q =>  processQuestion(q));
-    // Shuffle
-    return shuffle(processed);
+    // Shuffle and select maximum number of questions
+    maxQuestion = maxQuestion > questions.length ? questions.length : maxQuestion;
+    return shuffle(processed).slice(0,maxQuestion);
 }
 
 function verifyQuestion(question) {
-    // console.log("Id: ", question.id);
-    // console.log(question.ans);
-    // console.log(question.correct);
     var correctCount = 0;
     switch (question.type) {
         case "fill":
