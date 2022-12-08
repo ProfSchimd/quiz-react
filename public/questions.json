@@ -139,11 +139,31 @@
     {
         "id": "008",
         "type": "fill",
-        "text": "Completa l'istruzione per stampare a video la stringa <code>Ciao</code><br>{{0}}<code>('Ciao')</code>",
+        "text": "Completa l'istruzione per stampare a video la stringa <code>Ciao</code>",
+        "tofill": "{{0}}<code>('Ciao')</code>",
         "correct": [
             "print"
         ],
         "weight": 1
+    },
+
+    {
+        "id": "009",
+        "type": "invertible",
+        "text": [
+            "vere",
+            "false"
+        ],
+        "options": [
+            "V",
+            "V",
+            "F"
+        ],
+        "correct": [
+            1,1,0
+        ],
+        "weight": 1,
+        "hint": ""
     }
 
 ]

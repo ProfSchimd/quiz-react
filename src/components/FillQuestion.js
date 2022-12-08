@@ -9,7 +9,7 @@ function FillQuestion(props) {
     const {questions} = useContext(QuestionContext);
     const question = questions[props.questionNumber - 1];
     
-    const tokens = question.text.split(/\{\{\d\}\}/);
+    const tokens = question.tofill.split(/\{\{\d\}\}/);
     const last = tokens.pop();
     var difficultyText = <span className="badge bg-success">Facile</span>;
     if (question.weight > 2) {
@@ -23,7 +23,9 @@ function FillQuestion(props) {
             <div className="py-1">
                 <strong>Domanda {props.questionNumber}</strong>
                 <br />{difficultyText}
+                
                 <p>
+                <span dangerouslySetInnerHTML={{ __html: question.text }} /><br/>
                     {tokens.map((t, i) => {
                         return (
                             <span key={i}>

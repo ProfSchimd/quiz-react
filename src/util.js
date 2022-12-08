@@ -22,6 +22,7 @@ function processQuestion(q) {
     var newCorrect = q.correct.map(c => c);
     var newOptions = q.options ? q.options.map(o => o) : null;
     var newReview = q.review ? q.review.map(r => r) : null;
+    var newText = q.text;
     switch (q.type) {
         case "single":
             answers = q.options.map(o => 0);
@@ -36,13 +37,24 @@ function processQuestion(q) {
             newCorrect = q.correct.map((c,i) => q.correct[shuffledIndex[i]]);
             newOptions = q.options.map((c,i) => q.options[shuffledIndex[i]]);
             break;
+        case "invertible":
+            // first randomly choose normal or inverted
+            const invert = Math.floor(Math.random()*2);
+            const correct = q.correct.map(c => invert ? 1 - c : c);
+            const options = q.options;
+            newText = q.text[invert];
+            // second do the same as multiple
+            answers = correct.map(c => 0);
+            newCorrect = correct.map((c,i) => correct[shuffledIndex[i]]);
+            newOptions = options.map((c,i) => q.options[shuffledIndex[i]]);
+            break;
         case "fill":
             answers = q.correct.map(c => "");
             break;
         default:
             break;
     }
-    return {...q, options: newOptions, correct: newCorrect, review: newReview, ans: answers, score: null};
+    return {...q, text: newText, options: newOptions, correct: newCorrect, review: newReview, ans: answers, score: null};
 }
 
 function preprocessQuestions(questions, maxQuestion = 500) {
@@ -70,6 +82,7 @@ function verifyQuestion(question) {
             question.score = correctCount * question.weight;
             break;
         case "multiple":
+        case "invertible":
             correctCount = 0;
             for (let i = 0; i < question.ans.length; i++) {
                 if(question.ans[i] === question.correct[i]) {

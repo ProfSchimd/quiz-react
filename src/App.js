@@ -16,6 +16,10 @@ function makeComponent(question, index) {
       return (
         <MultipleQuestion key={index} questionNumber={`${index + 1}`} />
       );
+      case "invertible":
+        return (
+          <MultipleQuestion key={index} questionNumber={`${index + 1}`} />
+        );
     case "fill":
       return (
         <FillQuestion key={index} questionNumber={`${index + 1}`} />
